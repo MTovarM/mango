@@ -1,0 +1,35 @@
+<div class="div-login">
+     <mat-card class="login-mat-card">
+          <mat-card-title class="login-mat-card-title">
+               Mango Bike Login
+               <img src="../../../assets/images/LOGO_01-01.png" alt="logo" class="login-img">
+          </mat-card-title>
+          <mat-card-content class="login-card-content">
+          <form [formGroup]="form" (ngSubmit)="onSubmit" class="form-login">
+               <mat-form-field class="login-mat-form-field">
+                    <mat-label>Correo</mat-label>
+                    <input matInput type="text" formControlName="username" placeholder="correo@correo.com">
+                    <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.errors?.['required']">
+                         Este campo es requerido
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')?.errors?.['email']">Ingrese un correo válido</mat-error>
+                    <mat-error *ngIf="form.get('username')?.errors?.['email']">
+                         Ingrese un email válido
+                    </mat-error>
+               </mat-form-field>
+               <mat-form-field class="login-mat-form-field">
+                    <mat-label>Clave</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="clave">
+                    <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
+                         Este campo es requerido
+                    </mat-error>
+               </mat-form-field>
+               <div class="button">
+                    <button [disabled]="form.status === 'INVALID'" mat-button color="color" type="submit" class="login-button">Iniciar sesión</button>
+               </div>
+               <p class="login-a">¿Aún no te has registrado?  <a routerLink="/register">Registrame!</a></p>
+               <p class="login-a">¿Olvidate tu clave?  <a routerLink="/password-recovery">olvidé mi clave</a></p>    
+          </form>
+          </mat-card-content>
+     </mat-card>
+</div>
