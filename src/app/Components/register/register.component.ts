@@ -5,18 +5,8 @@ import {
 import { 
   Validators, 
   FormBuilder, 
-  FormGroup, 
-  FormControl} from "@angular/forms";
-
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { ToastService } from 'src/app/Services/toast.service';
-import { Router } from '@angular/router';
-import { SpinnerService } from '../spinner/spinner.service';
-
-export interface userRegister {
-  email: string;
-  password: string;
-}
+  FormGroup } from "@angular/forms";
+import { FirebaseService, User } from 'src/app/Services/firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -26,15 +16,12 @@ export interface userRegister {
 export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
-  userRegister!: userRegister;
+  userRegister!: User;
   isSamePassword: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
-    private fireAuth: AngularFireAuth,
-    private toast: ToastService,
-    private router: Router,
-    private spinner: SpinnerService
+    private firebaseService: FirebaseService
   ){}
 
   ngOnInit(): void {
@@ -51,42 +38,19 @@ export class RegisterComponent implements OnInit {
       this.isSamePassword = false;
       return; 
     }
-    this.spinner.show();
     this.userRegister = {
       email: this.form.value.email,
       password: this.form.value.firstPassword
     };
-    this.fireAuth.createUserWithEmailAndPassword(
-      this.userRegister.email, 
-      this.userRegister.password)
-    .then(user => {
-      this.spinner.hide();
-      this.toast.success(
-        'Usuario registrado',
-        'El correo se ha registrado correctamente, por fovor revise su correo y active su cuenta');
-      this.router.navigate(['/login']);
+
+    this.firebaseService.createUser(this.userRegister)
+    .then(response => {
+      console.log("Then: ");
+      console.log(response);
     })
     .catch(error => {
-      var message = '';
-      this.spinner.hide();
-      switch (error.code) {
-        case 'auth/email-already-in-use':
-          message = 
-          'El correo ya se encuentra registrado, por favor ingrese un correo diferente.'
-          break;
-        case 'auth/weak-password':
-          message = 
-          'La clave es tiene menos de 8 caracteres, ingrese una nueva clave.'
-          break;
-        case 'auth/invalid-email':
-          message = 
-          'El correo no tiene el formato correcto.'
-          break;
-        default:
-          message = 'Revise los datos enviados.'
-          break;
-      }
-      this.toast.error('Error al crear usuario', message);
+      console.log("Error: ");
+      console.log(error);
     });
   }
 
@@ -99,7 +63,3 @@ export class RegisterComponent implements OnInit {
     this.isSamePassword = true;
   }
 }
-
-//auth/email-already-in-use
-//auth/weak-password
-//auth/invalid-email
