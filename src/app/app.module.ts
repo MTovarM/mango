@@ -20,6 +20,11 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { enviroment } from 'src/environments/environment';
 import { ToastrModule } from 'ngx-toastr';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list'; 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 //Services
 import { ToastService } from "./Services/toast.service";
@@ -47,7 +52,12 @@ import { SpinnerInterceptor } from './Components/spinner/spinner.interceptor';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(enviroment.firebaseConfig),
     ToastrModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonToggleModule,
+    MatListModule
   ],
   providers: [
     ToastService,

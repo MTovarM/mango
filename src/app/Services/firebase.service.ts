@@ -117,4 +117,8 @@ export class FirebaseService {
       );
     });
   }
+
+  signOut(): void {
+    this.firebaseService.signOut().then(() => this.router.navigate(['/login']));
+  }
 }
