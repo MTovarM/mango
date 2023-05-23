@@ -1,0 +1,32 @@
+mat-stepper {
+    height: 100%;
+}
+
+mat-button-toggle {
+    margin: 15px; /* Separar los botones */
+    font-size: 30px; /* Hacer los botones más grandes */
+    background-color: #fdf8e9;
+    border-radius: 5%;
+    width: 190px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+    border: none; /* Eliminar el borde de los botones */
+}
+
+mat-button-toggle-group {
+    border: none;
+}
+
+mat-button-toggle.mat-button-toggle-checked {
+  background-color: #f2c149; /* Cambiar el color de fondo del botón seleccionado */
+  color: #fff; /* Cambiar el color de texto del botón seleccionado */
+}
+
+.step-one {
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-button {
+    display: flex;
+    align-items: center;
+  }

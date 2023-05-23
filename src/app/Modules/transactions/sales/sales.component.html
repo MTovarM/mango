@@ -1,0 +1,58 @@
+
+<mat-stepper linear #stepper>
+    <mat-step [stepControl]="processTypeForm" [editable]="true" color="accent">
+      <form [formGroup]="processTypeForm">
+        <ng-template matStepLabel>Elegir trámite</ng-template>
+        <div class="step-one">
+          <mat-button-toggle-group formControlName="processType">
+            <mat-button-toggle value="0"> 
+              <div class="toggle-button"><mat-icon>sell</mat-icon>Venta</div>
+            </mat-button-toggle>
+            <mat-button-toggle value="2">
+              <div class="toggle-button"><mat-icon>request_quote</mat-icon>Cotización</div>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div>
+          <button mat-button matStepperNext (click)="onClick($event)">Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="dataForm" [editable]="true" color="accent">
+      <div>
+        <form [formGroup]="dataForm">
+          <ng-template matStepLabel>Elegir productos</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="customerForm" [editable]="true" color="accent">
+        <form [formGroup]="customerForm">
+          <ng-template matStepLabel>Llenar datos de cliente</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+    <mat-step color="accent">
+      <ng-template matStepLabel>Finalizar </ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Volver</button>
+      </div>
+    </mat-step>
+  </mat-stepper>

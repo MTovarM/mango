@@ -1,0 +1,20 @@
+mat-drawer-container {
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: #FAFAF1;
+  }
+  
+  .sidenav {
+    width: 170px;
+  }
+  
+  mat-button-toggle-group {
+   width: 170px; 
+  }
+
+  .toggle-button {
+    text-align: initial;
+    display: flex;
+    align-items: center;
+  }

@@ -1,0 +1,21 @@
+<mat-drawer-container>
+    <mat-drawer class="sidenav" #sidenav mode="side" opened>
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" vertical="true">
+        <mat-button-toggle routerLink="sales" value="sales" routerLink="sales">
+          <div class="toggle-button"><mat-icon color="primary">sell</mat-icon>Venta/Cotización</div>
+        </mat-button-toggle>
+        <mat-button-toggle routerLink="purchases" value="purchases" routerLink="purchases">
+         <div class="toggle-button"><mat-icon color="primary">shopping_bag</mat-icon><span> Compras</span></div>
+        </mat-button-toggle>
+        <mat-button-toggle routerLink="returns" value="returns" routerLink="purchases">
+          <div class="toggle-button"><mat-icon color="primary">undo</mat-icon><span> Devoluciones</span></div>
+         </mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
+    </mat-drawer-content>
+</mat-drawer-container>
+
