@@ -34,6 +34,7 @@
      justify-content: center;
      align-items: center;
      background-color: #FAFAF1;
+     border: 2px solid #f5c039;
 }
 
 .login-card-content {

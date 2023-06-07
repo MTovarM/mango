@@ -3,9 +3,15 @@
     <mat-step [stepControl]="processTypeForm" [editable]="true" color="accent">
       <form [formGroup]="processTypeForm">
         <ng-template matStepLabel>Elegir trámite</ng-template>
+        <!-- <div>
+          <button mat-flat-button color="primary" (click)="savePurchase()" class="save-button"
+            [disabled]="providerForm.invalid || products2Add.length == 0">
+            <mat-icon>save</mat-icon>Guardar compra
+          </button>
+        </div> -->
         <div class="step-one">
           <mat-button-toggle-group formControlName="processType">
-            <mat-button-toggle value="0"> 
+            <mat-button-toggle color="primary" value="0"> 
               <div class="toggle-button"><mat-icon>sell</mat-icon>Venta</div>
             </mat-button-toggle>
             <mat-button-toggle value="2">

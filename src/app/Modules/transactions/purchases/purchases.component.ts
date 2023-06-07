@@ -87,10 +87,12 @@ export class PurchasesComponent {
       return filtered;
     })) : new Observable<string[]>;
 
+    //Cragar código de productos
     this.dataManager.inventary$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: Product[]) => this.codes = data.map(p => p.Codigo));
 
+    //Cargar marcas
     this.dataManager.brands$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: any) => {
@@ -102,6 +104,7 @@ export class PurchasesComponent {
         });
       });
 
+    //cargar tipos
     this.dataManager.types$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data: any) => {
